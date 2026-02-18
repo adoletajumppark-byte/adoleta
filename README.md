@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎈 Adoleta Jump Park | O Maior Parque Inflável do Brasil!</title>
+    <meta name="description" content="Prepare-se para PULAR, ESCORREGAR e se DIVERTIR no maior parque inflável do Brasil! 22 atrações infláveis gigantes em Toledo/PR!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #FF1493;
+            --purple: #9B59B6;
+            --yellow: #FFD700;
+            --orange: #FF6B35;
+            --blue: #00D4FF;
+            --green: #4ECB71;
+            --red: #FF3366;
+            --dark: #1a1a2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Baloo 2', cursive;
+            font-weight: 800;
+        }
+
+        /* Confetti Background */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--yellow);
+            position: absolute;
+            animation: confetti-fall linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Floating Shapes */
+        .floating-shape {
+            position: fixed;
+            opacity: 0.15;
+            animation: float-around 20s infinite ease-in-out;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes float-around {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, -100px) rotate(90deg); }
+            50% { transform: translate(200px, 50px) rotate(180deg); }
+            75% { transform: translate(-50px, 100px) rotate(270deg); }
+        }
+
+        .shape-1 { top: 10%; left: 10%; font-size: 80px; animation-delay: 0s; }
+        .shape-2 { top: 20%; right: 15%; font-size: 100px; animation-delay: 2s; }
+        .shape-3 { bottom: 15%; left: 20%; font-size: 90px; animation-delay: 4s; }
+        .shape-4 { bottom: 25%; right: 10%; font-size: 70px; animation-delay: 6s; }
+        .shape-5 { top: 50%; left: 5%; font-size: 85px; animation-delay: 8s; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 3rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--yellow), var(--orange), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes rainbow {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            color: white;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.5);
+            animation: pulse-btn 2s infinite;
+        }
+
+        @keyframes pulse-btn {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 40px rgba(255, 20, 147, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 60px rgba(255, 20, 147, 0.7); }
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.1) rotate(-2deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: none;
+            animation: bounceIn 1.2s ease-out;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hero h1 .emoji {
+            display: inline-block;
+            animation: rotate-emoji 2s infinite ease-in-out;
+        }
+
+        @keyframes rotate-emoji {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #FFD700 0%, #FF6B35 20%, #FF1493 40%, #9B59B6 60%, #00D4FF 80%, #4ECB71 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 2s infinite, text-bounce 1.5s infinite;
+            background-size: 300% 300%;
+            font-weight: 900;
+            display: inline-block;
+        }
+
+        @keyframes text-bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.02); }
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 2rem 3rem;
+            border-radius: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
+            animation: popIn 0.6s ease-out backwards;
+        }
+
+        .stat-box:nth-child(1) { animation-delay: 0.2s; }
+        .stat-box:nth-child(2) { animation-delay: 0.4s; }
+        .stat-box:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes popIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .stat-box:hover {
+            transform: translateY(-15px) rotate(3deg);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: var(--yellow);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--yellow);
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .hero-cta {
+            margin-top: 3rem;
+            animation: fadeInUp 1.8s ease-out;
+        }
+
+        .btn-mega {
+            font-size: 2rem;
+            padding: 2rem 5rem;
+            background: linear-gradient(135deg, var(--pink), var(--purple), var(--orange));
+            background-size: 200% 200%;
+            animation: gradient-move 3s infinite, mega-pulse 2s infinite;
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 0.6);
+            position: relative;
+        }
+
+        @keyframes gradient-move {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes mega-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .btn-mega:hover {
+            transform: scale(1.15) rotate(-3deg) !important;
+            box-shadow: 0 25px 80px rgba(255, 20, 147, 0.8);
+        }
+
+        .btn-mega::before {
+            content: '🎉';
+            position: absolute;
+            left: -40px;
+            font-size: 2rem;
+            animation: bounce-emoji 1s infinito;
+        }
+
+        .btn-mega::after {
+            content: '🎈';
+            position: absolute;
+            right: -40px;
+            font-size: 2rem;
+            animation: bounce-emoji 1s infinite 0.5s;
+        }
+
+        @keyframes bounce-emoji {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Urgency Banner */
+        .urgency-banner {
+            background: linear-gradient(135deg, var(--red), var(--orange));
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            animation: banner-slide 1s ease-out;
+        }
+
+        @keyframes banner-slide {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        .urgency-banner::before {
+            content: '⚡';
+            position: absolute;
+            left: 20px;
+            font-size: 2rem;
+            animation: flash 1s infinite;
+        }
+
+        .urgency-banner::after {
+            content: '⚡';
+            position: absolute;
+            right: 20px;
+            font-size: 2rem;
+            animation: flash 1s infinite 0.5s;
+        }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 15px rgba(0,0,0,0.3);
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 5rem;
+            opacity: 0.9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card:hover {
+            transform: translateY(-30px) rotate(5deg) scale(1.05);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+        .feature-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: bounce-icon 2s infinite;
+        }
+
+        @keyframes bounce-icon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .feature-card:hover .feature-icon {
+            animation: spin-icon 0.6s ease-in-out;
+        }
+
+        @keyframes spin-icon {
+            from { transform: rotate(0deg) scale(1); }
+            to { transform: rotate(360deg) scale(1.3); }
+        }
+
+        .feature-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 40px;
+            height: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+            animation: zoomIn 0.8s ease-out backwards;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes zoomIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.3) rotate(5deg);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 3rem 2rem 2rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+            color: var(--dark);
+            animation: flipIn 0.8s ease-out backwards;
+            position: relative;
+        }
+
+        .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+        .pricing-card:nth-child(2) { animation-delay: 0.2s; }
+        .pricing-card:nth-child(3) { animation-delay: 0.3s; }
+        .pricing-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes flipIn {
+            from { transform: rotateY(90deg); opacity: 0; }
+            to { transform: rotateY(0); opacity: 1; }
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+
+        .pricing-card.featured {
+            border: 4px solid var(--yellow);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-20px) scale(1.1);
+        }
+
+        .pricing-badge {
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            animation: badge-bounce 1s infinite;
+        }
+
+        @keyframes badge-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
+        }
+
+        .price-duration {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .price-features li {
+            padding: 0.6rem 0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .price-features li:before {
+            content: "✓";
+            color: var(--green);
+            font-weight: bold;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .btn-price {
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section h2 {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            animation: bounceIn 1.5s ease-out;
+        }
+
+        .cta-section p {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 5rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--yellow);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--yellow);
+            transform: translateX(10px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25D366;
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6);
+            cursor: pointer;
+            z-index: 1000;
+            animation: whatsapp-bounce 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes whatsapp-bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.3) rotate(15deg);
+            box-shadow: 0 15px 60px rgba(37, 211, 102, 0.8);
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==== MOBILE RESPONSIVE ==== */
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            header {
+                padding: 0.8rem 1.2rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+
+            .btn-cta {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .urgency-banner {
+                font-size: 0.9rem;
+                padding: 1rem;
+                margin-top: 100px;
+            }
+
+            .urgency-banner::before,
+            .urgency-banner::after {
+                font-size: 1.3rem;
+            }
+
+            .hero {
+                padding: 6rem 1.2rem 3rem;
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .hero h1 .emoji {
+                font-size: 2rem;
+            }
+
+            .gradient-text {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+                margin: 2rem 0;
+            }
+
+            .stat-box {
+                padding: 1.3rem 1.5rem;
+                border-radius: 20px;
+            }
+
+            .stat-number {
+                font-size: 2.3rem;
+            }
+
+            .stat-label {
+                font-size: 1rem;
+            }
+
+            .hero-cta {
+                margin-top: 2rem;
+            }
+
+            .btn-mega {
+                font-size: 1.2rem;
+                padding: 1.3rem 2.5rem;
+            }
+
+            .btn-mega::before,
+            .btn-mega::after {
+                display: none;
+            }
+
+            .features-section,
+            .gallery-section,
+            .pricing-section,
+            .cta-section {
+                padding: 4rem 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                padding: 0 0.5rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.05rem;
+                padding: 0 0.5rem;
+                margin-bottom: 3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+
+            .feature-card {
+                padding: 2rem 1.5rem;
+                border-radius: 25px;
+            }
+
+            .feature-icon {
+                font-size: 3.5rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .feature-card p {
+                font-size: 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .gallery-item {
+                height: 280px;
+                border-radius: 25px;
+            }
+
+            .gallery-overlay {
+                padding: 1.5rem 1.2rem 1rem;
+                font-size: 1.1rem;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pricing-card {
+                padding: 1.8rem 1.5rem;
+                border-radius: 22px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-badge {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .pricing-card h3 {
+                font-size: 1.35rem;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .price-duration {
+                font-size: 0.9rem;
+            }
+
+            .price-features li {
+                font-size: 0.9rem;
+                padding: 0.5rem 0;
+            }
+
+            .btn-price {
+                font-size: 0.95rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+                padding: 0 0.5rem;
+            }
+
+            .cta-section p {
+                font-size: 1.15rem;
+                padding: 0 0.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-section h4 {
+                font-size: 1.3rem;
+            }
+
+            .footer-section p,
+            .footer-section a {
+                font-size: 0.95rem;
+            }
+
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 2.2rem;
+            }
+
+            .floating-shape {
+                display: none;
+            }
+
+            .confetti {
+                width: 6px;
+                height: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .gradient-text {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn-mega {
+                font-size: 1rem;
+                padding: 1.1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Shapes -->
+    <div class="floating-shape shape-1">🎈</div>
+    <div class="floating-shape shape-2">🎉</div>
+    <div class="floating-shape shape-3">⭐</div>
+    <div class="floating-shape shape-4">🎪</div>
+    <div class="floating-shape shape-5">🎊</div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">🎈 ADOLETA JUMP PARK</a>
+            <a href="https://adoletajumppark.pagtickets.com.br" class="btn btn-cta">🎟️ COMPRAR INGRESSO</a>
+        </nav>
+    </header>
+
+    <!-- Urgency Banner -->
+    <div class="urgency-banner">
+        <strong>⏰ TEMPORADA LIMITADA:</strong> Toledo/PR até 28 de Fevereiro de 2026! 🔥
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="emoji">🎈</span>
+                O MAIOR PARQUE
+                <br>
+                <span class="gradient-text">INFLÁVEL DO BRASIL!</span>
+                <span class="emoji">🎉</span>
+            </h1>
+            <p>
+                Prepare-se para PULAR, ESCORREGAR e se DIVERTIR como nunca! 🚀
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <span class="stat-number">1.600m²</span>
+                    <span class="stat-label">🏟️ de pura diversão</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">22</span>
+                    <span class="stat-label">🎢 atrações incríveis</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">50k+</span>
+                    <span class="stat-label">👨‍👩‍👧‍👦 famílias felizes</span>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="https://adoletajumppark.pagtickets.com.br" class="btn btn-mega">
+                    QUERO ME DIVERTIR AGORA!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <h2 class="section-title scroll-reveal">🎪 22 Atrações de Tirar o Fôlego!</h2>
+        <p class="section-subtitle scroll-reveal">Cada uma mais divertida que a outra! 🤩</p>
+
+        <div class="features-grid">
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🎈</div>
+                <h3>Infláveis Gigantes</h3>
+                <p>Estruturas ENORMES de até 8 metros! Você vai se sentir nas nuvens! ☁️</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🏃</div>
+                <h3>Circuitos de Obstáculos</h3>
+                <p>Desafie seus amigos e família em percursos cheios de adrenalina! 💪</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🎢</div>
+                <h3>Rampas e Escorregadores</h3>
+                <p>Velocidade MÁXIMA e diversão GARANTIDA! Prepare-se para gritar! 😱</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🧗</div>
+                <h3>Escaladas Radicais</h3>
+                <p>Suba, conquiste e celebre no topo! Você consegue! 🏆</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                <h3>Para Toda Família</h3>
+                <p>De 2 a 102 anos! Todo mundo se diverte junto! 💕</p>
+            </div>
+
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🛡️</div>
+                <h3>100% Seguro</h3>
+                <p>Monitores treinados em TODAS as atrações! Diversão com tranquilidade! ✅</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem;">
+            <a href="https://adoletajumppark.pagtickets.com.br" class="btn btn-mega">
+                🎟️ GARANTIR MEU INGRESSO AGORA!
+            </a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h2 class="section-title scroll-reveal">📸 Veja a Alegria Acontecendo!</h2>
+        <p class="section-subtitle scroll-reveal">Imagens reais de quem já viveu essa experiência! 🌟</p>
+
+        <div class="gallery-grid">
+            <div class="gallery-item scroll-reveal">
+                <img src="https://images.unsplash.com/photo-1560523159-4a9692d222ef?w=800&q=80" alt="Infláveis coloridos">
+                <div class="gallery-overlay">🎈 Infláveis gigantes de até 8 metros!</div>
+            </div>
+            <div class="gallery-item scroll-reveal">
+                <img src="https://images.unsplash.com/photo-1529636944080-7b8e3f5d6c85?w=800&q=80" alt="Circuitos">
+                <div class="gallery-overlay">🏃 Circuitos cheios de desafios!</div>
+            </div>
+            <div class="gallery-item scroll-reveal">
+                <img src="https://images.unsplash.com/photo-1503516459261-40c66117780a?w=800&q=80" alt="Família">
+                <div class="gallery-overlay">👨‍👩‍👧‍👦 Diversão para toda família!</div>
+            </div>
+            <div class="gallery-item scroll-reveal">
+                <img src="https://images.unsplash.com/photo-1612032743049-f5b43a8b9915?w=800&q=80" alt="Escorregadores">
+                <div class="gallery-overlay">🎢 Escorregadores e rampas!</div>
+            </div>
+            <div class="gallery-item scroll-reveal">
+                <img src="https://images.unsplash.com/photo-1525183995014-bd94c0750cd5?w=800&q=80" alt="Crianças felizes">
+                <div class="gallery-overlay">😄 Sorrisos garantidos!</div>
+            </div>
+            <div class="gallery-item scroll-reveal">
+                <img src="https://images.unsplash.com/photo-1595429459548-3f2c6d6d9f8b?w=800&q=80" alt="Escalada">
+                <div class="gallery-overlay">🧗 Desafios de escalada!</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem;">
+            <p style="font-size: 1.5rem; margin-bottom: 1.5rem;">📱 Siga @adoletajumppark no Instagram!</p>
+            <a href="https://instagram.com/adoletajumppark" target="_blank" class="btn btn-mega">
+                📸 SEGUIR AGORA
+            </a>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <h2 class="section-title scroll-reveal">🎟️ Ingressos Imperdíveis!</h2>
+        <p class="section-subtitle scroll-reveal">Escolha o tempo perfeito para sua diversão! 🎉</p>
+
+        <div class="pricing-cards">
+            <div class="pricing-card scroll-reveal">
+                <h3>⏱️ 20 Minutos</h3>
+                <div class="price">R$ 39,90</div>
+                <p class="price-duration">Diversão rápida</p>
+                <ul class="price-features">
+                    <li>Todas as 22 atrações</li>
+                    <li>Monitores especializados</li>
+                    <li>Segurança garantida</li>
+                </ul>
+                <a href="https://adoletajumppark.pagtickets.com.br" class="btn btn-mega btn-price">
+                    COMPRAR
+                </a>
+            </div>
+
+            <div class="pricing-card featured scroll-reveal">
+                <div class="pricing-badge">🔥 MAIS VENDIDO</div>
+                <h3>⏱️ 40 Minutos</h3>
+                <div class="price">R$ 59,90</div>
+                <p class="price-duration">Melhor custo-benefício</p>
+                <ul class="price-features">
+                    <li>Todas as 22 atrações</li>
+                    <li>Tempo ideal</li>
+                    <li>Monitores especializados</li>
+                    <li>Segurança garantida</li>
+                </ul>
+                <a href="https://adoletajumppark.pagtickets.com.br" class="btn btn-mega btn-price">
+                    COMPRAR
+                </a>
+            </div>
+
+            <div class="pricing-card scroll-reveal">
+                <h3>⏱️ 1 Hora</h3>
+                <div class="price">R$ 79,90</div>
+                <p class="price-duration">Diversão máxima</p>
+                <ul class="price-features">
+                    <li>Todas as 22 atrações</li>
+                    <li>Tempo completo</li>
+                    <li>Monitores especializados</li>
+                    <li>Segurança garantida</li>
+                </ul>
+                <a href="https://adoletajumppark.pagtickets.com.br" class="btn btn-mega btn-price">
+                    COMPRAR
+                </a>
+            </div>
+
+            <div class="pricing-card scroll-reveal">
+                <h3>♿ PCD 40min</h3>
+                <div class="price">R$ 29,90</div>
+                <p class="price-duration">50% de desconto</p>
+                <ul class="price-features">
+                    <li>Laudo ou carteirinha</li>
+                    <li>Todas as atrações</li>
+                    <li>Acompanhamento disponível</li>
+                    <li>Estrutura acessível</li>
+                </ul>
+                <a href="https://adoletajumppark.pagtickets.com.br" class="btn btn-mega btn-price">
+                    COMPRAR
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-section">
+        <h2 class="scroll-reveal">🚀 Pronto para a Aventura?</h2>
+        <p class="scroll-reveal">Não perca tempo! A temporada é LIMITADA! ⏰</p>
+        <a href="https://adoletajumppark.pagtickets.com.br" class="btn btn-mega scroll-reveal">
+            🎟️ COMPRAR INGRESSO AGORA!
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🎈 Adoleta Jump Park</h4>
+                <p>O maior parque inflável do Brasil com 22 atrações para toda a família!</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>📍 Localização</h4>
+                <p>Toledo/PR</p>
+                <p>Temporada até 28/02/2026</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>📱 Contato</h4>
+                <a href="https://instagram.com/adoletajumppark" target="_blank">📸 Instagram: @adoletajumppark</a>
+                <a href="https://api.whatsapp.com/send?phone=5519981459553" target="_blank">💬 WhatsApp: (19) 98145-9553</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>🕐 Horários</h4>
+                <p>Terça a Sábado: 17h-22h</p>
+                <p>Domingo: 17h-21h</p>
+                <p>Segunda: Fechado</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Adoleta Jump Park. Todos os direitos reservados. 🎉</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://api.whatsapp.com/send?phone=5519981459553&text=Olá! Quero saber mais sobre o Adoleta Jump Park! 🎈" target="_blank" class="whatsapp-float">
+        💬
+    </a>
+
+    <script>
+        // Scroll Reveal Animation
+        const scrollReveal = () => {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', scrollReveal);
+        scrollReveal(); // Initial check
+
+        // Create Confetti
+        const createConfetti = () => {
+            const colors = ['#FF1493', '#9B59B6', '#FFD700', '#FF6B35', '#00D4FF', '#4ECB71'];
+
+            // Reduz confetti no mobile
+            const isMobile = window.innerWidth <= 768;
+            const confettiCount = isMobile ? 30 : 50;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(confetti);
+            }
+        };
+
+        createConfetti();
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
